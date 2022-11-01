@@ -21,11 +21,12 @@ incs:=$(wildcard $(INC_DIR)/*.h)
 objs:=$(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(srcs))
 exe:=$(BIN_DIR)/$(EXE_NAME)
 
-default: run 
+default: debug
 
 .PHONY: \
 	default \
-	run \
+	debug \
+	release \
 	clean \
 	pack \
 	install_termux \
@@ -36,8 +37,11 @@ default: run
 	.install \
 	.uninstall 
 
-run: $(exe)
-	./$(exe)
+debug: CFLAGS+=-O0 -g
+debug: $(exe)
+
+release: CFLAGS+=-O2
+release: $(exe)
 
 clean:
 	rm -rf $(OBJ_DIR)/* $(BIN_DIR)/* $(EXP_INC_DIR)/* $(EXP_LIB_DIR)/* $(EXP_BIN_DIR)/*
