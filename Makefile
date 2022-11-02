@@ -11,10 +11,12 @@ TST_EXE_NAME:=unit_test
 EXP_BIN_DIR:=$(EXP_DIR)/bin
 EXP_LIB_DIR:=$(EXP_DIR)/lib
 EXP_INC_DIR:=$(EXP_DIR)/include
-LINUX_INC_INST_DIR:=/usr/local/include/struct
+INC_INST_DIRNAME:=basec # MUST NOT BE EMPTY!!!
+
+LINUX_INC_INST_DIR:=/usr/local/include/$(INC_INST_DIRNAME)
 LINUX_LIB_INST_DIR:=/usr/local/lib
 LINUX_BIN_INST_DIR:=/usr/local/bin
-TERMUX_INC_INST_DIR:=$${HOME}/../usr/include/struct
+TERMUX_INC_INST_DIR:=$${HOME}/../usr/include/$(INC_INST_DIRNAME)
 TERMUX_LIB_INST_DIR:=$${HOME}/../usr/lib
 TERMUX_BIN_INST_DIR:=$${HOME}/../usr/bin
 
