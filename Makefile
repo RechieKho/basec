@@ -87,9 +87,9 @@ uninstall_linux: .uninstall
 	$(if $(value lib_inst_dir),, $(error "Library install directory is not specified."))
 	$(if $(value bin_inst_dir),, $(error "Binary install directory is not specified."))
 	if [ ! -d $(inc_inst_dir) ]; then mkdir $(inc_inst_dir); fi
-	cp $(EXP_INC_DIR)/* $(inc_inst_dir) 2>/dev/null || :
-	cp $(EXP_LIB_DIR)/* $(lib_inst_dir) 2>/dev/null || :
-	cp $(EXP_BIN_DIR)/* $(bin_inst_dir) 2>/dev/null || :
+	cp -i --backup=t $(EXP_INC_DIR)/* $(inc_inst_dir) || :
+	cp -i --backup=t $(EXP_LIB_DIR)/* $(lib_inst_dir) || :
+	cp -i --backup=t $(EXP_BIN_DIR)/* $(bin_inst_dir) || :
 
 .uninstall: 
 	$(if $(value inc_inst_dir),, $(error "Include install directory is not specified."))
