@@ -45,6 +45,7 @@ default: test
 	.install \
 	.uninstall 
 
+test: CFLAGS+=-O0 -g
 test: $(tst_exe)
 	./$(tst_exe)
 
